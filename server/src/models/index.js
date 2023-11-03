@@ -8,6 +8,8 @@ const { Attack } = require("./Attack");
 User.hasOne(Deck);
 Deck.belongsTo(User);
 //
+Deck.hasMany(Card);
+Card.belongsTo(Deck);
 
 // and then export them all below
 module.exports = { User, Card, Deck, Attack };
