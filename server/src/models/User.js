@@ -5,6 +5,6 @@ const User = db.define("user", {
   username: DataTypes.STRING,
 });
 
-console.log(User);
+//console.log(User);
 
-module.exports = User;
+module.exports = { User };

@@ -1,5 +1,6 @@
 const { describe, it, expect, beforeAll, afterAll } = require("@jest/globals");
-const User = require("./User");
+const { User, Deck, Card, Attack } = require("./index");
+//const Deck = require("./index");
 const { db } = require("../db/config");
 
 // define in global scopel
@@ -21,8 +22,4 @@ describe("User", () => {
   it("has the correct name", () => {
     expect(user.username).toBe("gandalf");
   });
-  /**
-   * Create more tests
-   * E.g. check that the username of the created user is actually gandalf
-   */
 });
