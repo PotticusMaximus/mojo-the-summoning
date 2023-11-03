@@ -63,4 +63,17 @@ describe("Attack", () => {
       ["Wit repel", "Skill push"],
     ]);
   });
+  test("A card can be loaded with its attacks", async () => {
+    const findCard = await Card.findOne({
+      where: { name: "Burrich" },
+      include: Attack,
+    });
+    const result = [
+      await findCard.name,
+      await findCard.Attacks[0].title,
+      await findCard.Attacks[1].title,
+    ];
+    console.log(findCard);
+    expect(result).toEqual(["Burrich", "Wit repel", "Skill push"]);
+  });
 });
