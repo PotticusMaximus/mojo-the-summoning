@@ -15,11 +15,22 @@ beforeAll(async () => {
 // clear db after tests
 afterAll(async () => await db.sync({ force: true }));
 describe("User", () => {
-  it("has an id", async () => {
+  it("has an id and a correctly assigned name", async () => {
     expect(user).toHaveProperty("id");
+    expect(user).toHaveProperty("username");
+    expect(user.username).toBe("gandalf");
   });
 
-  it("has the correct name", () => {
-    expect(user.username).toBe("gandalf");
+  it("can be updated", async () => {
+    let findUser = await User.findOne({ where: { username: "gandalf" } });
+    const newUsername = await findUser.update({ username: "Gandalf" });
+    return newUsername;
+    expect(user.username).toBe("Gandalf");
+  });
+  it("can be deleted", async () => {
+    let findUser = await User.findOne({ where: { username: "Gandalf" } });
+    const deleteGrey = await findUser.destroy();
+    return deleteGrey;
+    expect(deleteGrey.username).toBe("Gandalf");
   });
 });

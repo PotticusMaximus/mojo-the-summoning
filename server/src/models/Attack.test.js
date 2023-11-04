@@ -73,7 +73,7 @@ describe("Attack", () => {
       await findCard.Attacks[0].title,
       await findCard.Attacks[1].title,
     ];
-    console.log(findCard);
+    //console.log(findCard);
     expect(result).toEqual(["Burrich", "Wit repel", "Skill push"]);
   });
 });
